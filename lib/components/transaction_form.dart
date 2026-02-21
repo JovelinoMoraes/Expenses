@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
-  TransactionForm(this.onSubmit, {super.key});
+  const TransactionForm(this.onSubmit, {super.key});
   final void Function(String, double) onSubmit;
 
   @override
@@ -13,7 +13,7 @@ class _TransactionFormState extends State<TransactionForm> {
 
   final valueController = TextEditingController();
 
-  _submitForm() {
+  void _submitForm() {
     final title = titleController.text;
     final value = double.tryParse(valueController.text) ?? 0.0;
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'components/transaction_list.dart';
 import 'package:expenses/components/transaction_form.dart';
 
-main() => runApp(ExpensesApp());
+void main() => runApp(ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
   ExpensesApp({super.key});
@@ -16,6 +16,7 @@ class ExpensesApp extends StatelessWidget {
       home: const MyHomePage(),
       theme: ThemeData(
         useMaterial3: false,
+        fontFamily: 'Quicksand',
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.purple,
           foregroundColor: Colors.white,
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
-  _addTransaction(String title, double value) {
+  void _addTransaction(String title, double value) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
-  _openTransactionFormModal(BuildContext context) {
+  void _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (_) {
@@ -81,7 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Despesas Pessoais'),
+        title: const Text(
+          'Despesas Pessoais',
+          style: TextStyle(fontFamily: 'OpenSans'),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
