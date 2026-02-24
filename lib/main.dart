@@ -15,16 +15,15 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       home: const MyHomePage(),
       theme: ThemeData(
-        useMaterial3: false,
+        useMaterial3: true,
         fontFamily: 'Quicksand',
-        appBarTheme: AppBarTheme(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.purple,
           foregroundColor: Colors.white,
         ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.amber,
-          primary: Colors.purple,
-          secondary: Colors.amber,
+        textTheme: ThemeData.light().textTheme.copyWith(
+          titleLarge: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
     );
