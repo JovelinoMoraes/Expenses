@@ -15,16 +15,25 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       home: const MyHomePage(),
       theme: ThemeData(
-        useMaterial3: false,
+        useMaterial3: true,
         fontFamily: 'Quicksand',
-        appBarTheme: AppBarTheme(
+
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.purple,
+          brightness: Brightness.light,
+        ),
+        textTheme: ThemeData.light().textTheme.copyWith(
+          titleLarge: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.purple,
           foregroundColor: Colors.white,
-        ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.amber,
-          primary: Colors.purple,
-          secondary: Colors.amber,
+          centerTitle: false,
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: Colors.white,
+          ),
         ),
       ),
     );
@@ -39,19 +48,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tênis de Corrida',
-      value: 310.76,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    //   Transaction(
+    //     id: 't1',
+    //     title: 'Novo Tênis de Corrida',
+    //     value: 310.76,
+    //     date: DateTime.now(),
+    //   ),
+    //   Transaction(
+    //     id: 't2',
+    //     title: 'Conta de Luz',
+    //     value: 211.30,
+    //     date: DateTime.now(),
+    //   ),
   ];
 
   void _addTransaction(String title, double value) {
@@ -82,10 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Despesas Pessoais',
-          style: TextStyle(fontFamily: 'OpenSans'),
-        ),
+        title: const Text('Despesas Pessoais'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
